@@ -1,0 +1,37 @@
+{
+  "name": "cli-simple-progress",
+  "version": "1.0.0-0",
+  "description": "Simple to use progress-bar for command-line/terminal applications",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fengxinming/cli-simple-progress.git"
+  },
+  "keywords": [
+    "cli",
+    "progress",
+    "progress-bar",
+    "log-update"
+  ],
+  "author": "Jesse Feng <fxm0016@126.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fengxinming/cli-simple-progress/issues"
+  },
+  "homepage": "https://github.com/fengxinming/cli-simple-progress#readme",
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "log-update": "^3.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}
