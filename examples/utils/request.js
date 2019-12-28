@@ -2,7 +2,8 @@ const EventEmitter = require('events');
 
 class Request extends EventEmitter {
 
-  download() {
+  constructor() {
+    super();
     let transferred = 0;
     const total = 90044871;
 
