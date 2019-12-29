@@ -6,6 +6,12 @@ const log = require('log-update');
 
 class ProgressBar extends EventEmitter {
 
+  /**
+   * 进度条
+   *
+   * @constructor
+   * @param {(number|Object)} [options={}] - 初始化配置
+   */
   constructor(options) {
     super();
 
@@ -17,19 +23,30 @@ class ProgressBar extends EventEmitter {
       options.stream = process.stdout;
     }
 
-    this.reset(options);
+    this.options = options;
+    this.reset();
   }
 
+  /**
+   * 清除进度条
+   */
   clear() {
     this._render.clear();
   }
 
+  /**
+   * 标记换行输出
+   */
   done() {
     this._render.done();
   }
 
+  /**
+   * 重置到初始化配置
+   * @param {Object=} options - 参数对象
+   */
   reset(options) {
-    options = options || {};
+    options = Object.assign({}, this.options, options);
 
     this._template = options.template || `${chalk.bgGreen('{complete}')}${chalk.bgWhite('{incomplete}')} {percent}%`;
     this._complete = options.complete || ' ';
@@ -49,22 +66,45 @@ class ProgressBar extends EventEmitter {
     }
   }
 
+  /**
+   * 当前进度值
+   */
   get current() {
     return this._current;
   }
 
-  progress(decimalIncrement, tokens) {
-    this.update((this._current + decimalIncrement * this._total) >>> 0, tokens);
+  /**
+   * 递增百分比进度
+   * @param {number} decimal - 百分比小数
+   * @param {Object=} tokens - 用于替换模板中的占位符
+   */
+  progress(decimal, tokens) {
+    this.update((this._current + decimal * this._total) >>> 0, tokens);
   }
 
+  /**
+   * 递增进度值
+   * @param {number} increment - 进度累加值
+   * @param {Object=} tokens - 用于替换模板中的占位符
+   */
   increase(increment, tokens) {
     this.update(this._current + (increment || 1), tokens);
   }
 
+  /**
+   * 设置百分比进度
+   * @param {number} decimal - 百分比小数
+   * @param {Object=} tokens - 用于替换模板中的占位符
+   */
   ratio(decimal, tokens) {
-    this.render((decimal * this._total) >>> 0, tokens);
+    this.update((decimal * this._total) >>> 0, tokens);
   }
 
+  /**
+   * 设置进度值
+   * @param {number} value - 进度值
+   * @param {Object=} tokens - 用于替换模板中的占位符
+   */
   update(value, tokens) {
     this.render(value, tokens);
 
@@ -80,6 +120,11 @@ class ProgressBar extends EventEmitter {
     }
   }
 
+  /**
+   * 实际渲染方法
+   * @param {number} value - 进度值
+   * @param {Object=} tokens - 用于替换模板中的占位符
+   */
   render(value, tokens) {
     const { _current, _total } = this;
     if (value >= _total) {
@@ -126,6 +171,9 @@ class ProgressBar extends EventEmitter {
 
 }
 
+/**
+ * @type {Function}
+ */
 ProgressBar.log = log;
 
 module.exports = ProgressBar;

@@ -5,7 +5,7 @@ function exec() {
   // 创建 progress bar
   const bar = new ProgressBar({
     width: 30,
-    template: `CLI Progress | ${chalk.bgGreen('{complete}')}${chalk.bgWhite('{incomplete}')} | {percent}% | {current}/{total}`,
+    template: `CLI Progress | ${chalk.bgCyan('{complete}')}${chalk.bgWhite('{incomplete}')} | {percent}% | {current}/{total}`,
     complete: ' ',
     incomplete: ' '
   });
