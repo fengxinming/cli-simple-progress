@@ -1,6 +1,6 @@
 {
   "name": "cli-simple-progress",
-  "version": "1.0.0-2",
+  "version": "1.0.0",
   "description": "Simple to use progress-bar for command-line/terminal applications",
   "main": "index.js",
   "repository": {
