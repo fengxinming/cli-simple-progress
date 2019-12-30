@@ -4,10 +4,7 @@ const ProgressBar = require('../index');
 function exec() {
   // 创建 progress bar
   const bar = new ProgressBar({
-    width: 30,
-    template: 'CLI Progress | {complete}{incomplete} | {percent}% | {current}/{total}Mb/s Chunks | Speed: {speed}Mb/s',
-    complete: '\u2588',
-    incomplete: '\u2591'
+    width: 30
   });
 
   // 初始化展示内容

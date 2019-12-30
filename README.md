@@ -117,7 +117,8 @@ These are keys in the options object you can pass to the progress bar along with
 
 These are tokens you can use in the template of your progress bar.
 
-* `{bar}` the progress bar itself
+* `{complete}` the complete progress bar
+* `{incomplete}` the incomplete progress bar
 * `{current}` current tick number
 * `{total}` total ticks
 * `{percent}` completion percentage

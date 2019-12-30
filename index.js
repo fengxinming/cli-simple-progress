@@ -32,6 +32,7 @@ class ProgressBar extends EventEmitter {
    */
   clear() {
     this._render.clear();
+    return this;
   }
 
   /**
@@ -39,6 +40,7 @@ class ProgressBar extends EventEmitter {
    */
   done() {
     this._render.done();
+    return this;
   }
 
   /**
@@ -64,6 +66,7 @@ class ProgressBar extends EventEmitter {
         showCursor: options.showCursor || false
       });
     }
+    return this;
   }
 
   /**
@@ -79,7 +82,7 @@ class ProgressBar extends EventEmitter {
    * @param {Object=} tokens - 用于替换模板中的占位符
    */
   progress(decimal, tokens) {
-    this.update((this._current + decimal * this._total) >>> 0, tokens);
+    return this.update((this._current + decimal * this._total) >>> 0, tokens);
   }
 
   /**
@@ -88,7 +91,7 @@ class ProgressBar extends EventEmitter {
    * @param {Object=} tokens - 用于替换模板中的占位符
    */
   increase(increment, tokens) {
-    this.update(this._current + (increment || 1), tokens);
+    return this.update(this._current + (increment || 1), tokens);
   }
 
   /**
@@ -97,7 +100,7 @@ class ProgressBar extends EventEmitter {
    * @param {Object=} tokens - 用于替换模板中的占位符
    */
   ratio(decimal, tokens) {
-    this.update((decimal * this._total) >>> 0, tokens);
+    return this.update((decimal * this._total) >>> 0, tokens);
   }
 
   /**
@@ -118,6 +121,8 @@ class ProgressBar extends EventEmitter {
       }
       this.emit('complete');
     }
+
+    return this;
   }
 
   /**
@@ -167,6 +172,8 @@ class ProgressBar extends EventEmitter {
       this._render(content);
       this._lastDraw = content;
     }
+
+    return this;
   }
 
 }
@@ -175,5 +182,17 @@ class ProgressBar extends EventEmitter {
  * @type {Function}
  */
 ProgressBar.log = log;
+
+/**
+ * 获取颜色处理函数
+ *
+ * @param {string} color - 颜色名称或者十六进制值
+ * @returns {Function}
+ */
+ProgressBar.colorize = function (color) {
+  return color[0] === '#'
+    ? chalk.hex(color)
+    : chalk[color] || chalk.keyword(color);
+};
 
 module.exports = ProgressBar;
