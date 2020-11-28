@@ -105,7 +105,7 @@ These are keys in the options object you can pass to the progress bar along with
 * `current` - current completed value defaulting to `0`
 * `total` - total number of ticks to complete defaulting to `100`
 * `width` - the displayed width of the progress bar defaulting to `20`
-* `stream` - the output stream defaulting to `process.stdout`
+* `stream` - the output stream defaulting to `process.stderr`
 * `clear` - option to clear the bar on completion defaulting to `false`
 * `complete` - completion character defaulting to `" "`
 * `incomplete` - incomplete character defaulting to `" "`

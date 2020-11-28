@@ -1,6 +1,6 @@
 {
   "name": "cli-simple-progress",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Simple to use progress-bar for command-line/terminal applications",
   "main": "index.js",
   "repository": {
@@ -23,8 +23,8 @@
     "node": ">=6"
   },
   "dependencies": {
-    "chalk": "^3.0.0",
-    "log-update": "^3.3.0"
+    "chalk": "^4.1.0",
+    "log-update": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^6.7.2",

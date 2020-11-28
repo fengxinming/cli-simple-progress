@@ -20,7 +20,7 @@ class ProgressBar extends EventEmitter {
       : (options || {});
 
     if (!options.stream) {
-      options.stream = process.stdout;
+      options.stream = process.stderr;
     }
 
     this.options = options;
